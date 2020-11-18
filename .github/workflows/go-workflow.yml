@@ -2,7 +2,7 @@ name: CICD
 on: [push]
 jobs:
   build:
-    runs-on: ubuntu-16.04
+    runs-on: testrunner1
     strategy:
       matrix:
         go: [ '1.14' ]
