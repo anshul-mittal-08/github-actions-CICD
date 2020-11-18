@@ -2,7 +2,7 @@ name: CICD
 on: [push]
 jobs:
   build:
-    runs-on: testrunner1
+    runs-on: tpcrunner1
     strategy:
       matrix:
         go: [ '1.14' ]
