@@ -5,7 +5,7 @@ jobs:
     runs-on: tpcrunner1
     strategy:
       matrix:
-        go: [ '1.14' ]
+        go: [ '1.13' ]
     name: Go ${{ matrix.go }} sample
     steps:
       - name: Setup go
