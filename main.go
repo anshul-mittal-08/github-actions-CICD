@@ -8,7 +8,7 @@ import (
 	"runtime"
 	)
 
-func Demo() {
+func main() {
 	fmt.Printf("Go version: %s\n", runtime.Version())
 	fmt.Printf("GOOS: %s\n", runtime.GOOS)
 	fmt.Printf("GOARCH: %s\n", runtime.GOARCH)
