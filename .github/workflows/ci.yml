@@ -6,7 +6,7 @@ on:
     branches: [develop]
 jobs:
   build:
-    runs-on: gitrunner1
+    runs-on: ubuntu-latest
     steps:
       - name: Installs Go
         uses: actions/setup-go@v2
