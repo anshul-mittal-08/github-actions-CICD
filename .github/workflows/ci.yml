@@ -6,7 +6,7 @@ on:
     branches: [develop]
 jobs:
   build:
-    runs-on: githubrunner
+    runs-on: gitrunner1
     steps:
       - name: Install Go
         uses: actions/setup-go@v2
