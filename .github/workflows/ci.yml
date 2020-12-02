@@ -1,21 +1,26 @@
 name: CI
 on:
-  pull_request:
-    branches: [develop]
+#  pull_request:
+#    branches: [develop]
   push:
-    branches: [develop]
+#    branches: [develop]
+    branches: [master]
 jobs:
   build:
-    runs-on: gitrunner1
+    runs-on: ubuntu-latest
     steps:
-      - name: Install Go
+      - name: Installs Go
         uses: actions/setup-go@v2
         with:
-          go-version: ${{ matrix.go-version }}
-      - name: Checkout code
+          go-version: 1.14
+      - name: Checkout the code
         uses: actions/checkout@v2
-      - name: run
+      - name: run go script
         run: go run main.go
+      - name: run bash
+        run: pwd
+        shell: bash
       - name: Build Project
         if: github.event_name == 'push'
         run: go build main.go
+
