@@ -22,7 +22,5 @@ jobs:
           hostname
       - name: Build Project
         if: github.event_name == 'push'
-        run: |
-          go build main.go
-          pwd
-          hostname
+        run: go build main.go
+
