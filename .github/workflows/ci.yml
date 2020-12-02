@@ -2,6 +2,8 @@ name: CI
 on:
   pull_request:
     branches: [develop]
+  push:
+    branches: [develop]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,4 +15,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: run
+        run: go run main.go
+      - name: Build Project
+        if: github.event_name == 'push'
         run: go build main.go
