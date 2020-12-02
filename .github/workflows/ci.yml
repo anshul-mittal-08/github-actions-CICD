@@ -24,11 +24,10 @@ jobs:
         run: |
           pwd
           ls -al
-       - name: convert to Tar file
-          run: tar -czvf main.tar.gz /home/runner/work/github-actions-CICD/github-actions-CICD/main
-       - name: run bash
-          run: |
-            ls -al
+      - name: convert to Tar file
+        run: tar -czvf main.tar.gz /home/runner/work/github-actions-CICD/github-actions-CICD/main
+      - name: run bash
+        run: ls -al
 
 
 
