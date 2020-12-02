@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
       - name: run go script
         run: go run main.go
-      - name: run bash commands
+      - name: run bash
         run: pwd
         shell: bash
       - name: Build Project
