@@ -6,7 +6,7 @@ on:
     branches: [develop]
 
 jobs:
-  lint:
+  lint and formatting:
     runs-on: ubuntu-latest
     steps:
       - name: Installs Go
@@ -22,6 +22,7 @@ jobs:
           echo $GOPATH
           echo $GOBIN
           golint main.go
+          gofmt -w main.go
 #
 #  build:
 #    runs-on: ubuntu-latest
