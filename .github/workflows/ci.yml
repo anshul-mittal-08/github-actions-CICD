@@ -1,0 +1,21 @@
+name: CI
+on:
+  pull_request:
+    branches: [develop]
+  push:
+    branches: [develop]
+jobs:
+  build:
+    runs-on: gitrunner1
+    steps:
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.go-version }}
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: run
+        run: go run main.go
+      - name: Build Project
+        if: github.event_name == 'push'
+        run: go build main.go
