@@ -7,7 +7,7 @@ on:
 
 jobs:
   LintAndFormatting:
-    runs-on: tpcrunner1
+    runs-on: tpcgitrunner
     steps:
 #      - name: Installs Go
 #        uses: actions/setup-go@v2
