@@ -9,17 +9,17 @@ jobs:
   LintAndFormatting:
     runs-on: tpcgitrunner
     steps:
-#      - name: Installs Go
-#        uses: actions/setup-go@v2
-#        with:
-#          go-version: 1.14
+      - name: Installs Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.14
       - name: Checkout the Code
         uses: actions/checkout@v2
-      - name: run bash
-        run: |
-          pwd
-          ls -al
-          curl -v -u ${{ secrets.NEXUSUSERNAME }}:${{ secrets.NEXUSPASSWORD }}  -X POST 'http://tpc001445.tgrc.tesco.org:8080/service/rest/v1/components?repository=amittal-test-maven' -F maven2.groupId=group3 -F maven2.artifactId=group3 -F maven2.version=2.0 -F maven2.asset1=README.md -F maven2.asset1.extension=md
+#      - name: run bash
+#        run: |
+#          pwd
+#          ls -al
+#          curl -v -u ${{ secrets.NEXUSUSERNAME }}:${{ secrets.NEXUSPASSWORD }}  -X POST 'http://tpc001445.tgrc.tesco.org:8080/service/rest/v1/components?repository=amittal-test-maven' -F maven2.groupId=group3 -F maven2.artifactId=group3 -F maven2.version=2.0 -F maven2.asset1=README.md -F maven2.asset1.extension=md
 
       #      - name: Lint the Code
 #        run: |
