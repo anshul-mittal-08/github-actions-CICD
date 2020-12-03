@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: tpc004746
 
     steps:
       - uses: actions/checkout@v2
@@ -12,5 +12,3 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Build with Maven
-        run: mvn -B package --file pom.xml
