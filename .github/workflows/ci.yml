@@ -25,7 +25,7 @@ jobs:
           gofmt -w main.go
 
   build:
-    runs-on: gitrunner1
+    runs-on: ubuntu-latest
     steps:
       - name: Installs Go
         uses: actions/setup-go@v2
@@ -46,4 +46,4 @@ jobs:
         run: |
           pwd
           ls -al
-          java --version
+          java -version
