@@ -1,9 +1,9 @@
 name: CI
 on:
   pull_request:
-    branches: [develop]
-  push:
     branches: [master]
+  push:
+    branches: [workflow]
 
 jobs:
   LintAndFormatting:
