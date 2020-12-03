@@ -37,12 +37,11 @@ jobs:
         run: go run main.go
       - name: Build Project
         if: github.event_name == 'push'
-        run: env GOOS=windows GOARCH=amd64 go build main.go
-      - name: run bash
         run: |
+          env GOOS=windows GOARCH=amd64 go build main.go
           pwd
           ls -al
-          curl -v -u ${{ secrets.NEXUSUSERNAME }}:${{ secrets.NEXUSPASSWORD }} -X POST 'https://nexus-ppe.ourtesco.com/service/rest/v1/components?repository=amittaltestmaven' -F maven2.groupId=test7 -F maven2.artifactId=test7 -F maven2.version=1.0 -F maven2.asset1=@main.exe -F maven2.asset1.extension=exe
+          curl -v -u ${{ secrets.NEXUSUSERNAME }}:${{ secrets.NEXUSPASSWORD }} -X POST 'https://nexus-ppe.ourtesco.com/service/rest/v1/components?repository=amittaltestmaven' -F maven2.groupId=test8 -F maven2.artifactId=test8 -F maven2.version=1.0 -F maven2.asset1=@main.exe -F maven2.asset1.extension=exe
 #      - name: Nexus Repo Publish
 #        uses: sonatype-nexus-community/nexus-repo-github-action@master
 #        with:
