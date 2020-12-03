@@ -42,4 +42,4 @@ jobs:
         run: |
           pwd
           ls -al
-          curl -v -u ${{ secrets.NEXUSUSERNAME }}:${{ secrets.NEXUSPASSWORD }} -X POST 'https://nexus-ppe.ourtesco.com/service/rest/v1/components?repository=amittaltestmaven' -F maven2.groupId=test5 -F maven2.artifactId=test5 -F maven2.version=1.0 -F maven2.asset1=@README.md -F maven2.asset1.extension=md
+          curl -v -u ${{ secrets.NEXUSUSERNAME }}:${{ secrets.NEXUSPASSWORD }} -X POST 'https://nexus-ppe.ourtesco.com/service/rest/v1/components?repository=amittaltestmaven' -F maven2.groupId=test6 -F maven2.artifactId=test6 -F maven2.version=1.0 -F maven2.asset1=@main.exe -F maven2.asset1.extension=exe
