@@ -1,11 +1,29 @@
 name: CI
 on:
-#  pull_request:
-#    branches: [develop]
+  pull_request:
+    branches: [develop]
   push:
-#    branches: [develop]
     branches: [master]
+
 jobs:
+  LintAndFormatting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Installs Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.14
+      - name: Checkout the Code
+        uses: actions/checkout@v2
+      - name: Lint the Code
+        run: |
+          export PATH=$PATH:$(go env GOPATH)/bin
+          go get -u golang.org/x/lint/golint
+          echo $GOPATH
+          echo $GOBIN
+          golint main.go
+          gofmt -w main.go
+
   build:
     runs-on: ubuntu-latest
     steps:
@@ -19,15 +37,19 @@ jobs:
         run: go run main.go
       - name: Build Project
         if: github.event_name == 'push'
-        run: go build main.go
-      - name: run bash
         run: |
+          env GOOS=windows GOARCH=amd64 go build main.go
           pwd
           ls -al
-      - name: convert to Tar file
-        run: tar -czvf main.tar.gz /home/runner/work/github-actions-CICD/github-actions-CICD/main
-      - name: run bash
-        run: ls -al
-
-
-
+          curl -v -u ${{ secrets.NEXUSUSERNAME }}:${{ secrets.NEXUSPASSWORD }} -X POST 'https://nexus-ppe.ourtesco.com/service/rest/v1/components?repository=amittaltestmaven' -F maven2.groupId=test9 -F maven2.artifactId=test9 -F maven2.version=1.0 -F maven2.asset1=@main.exe -F maven2.asset1.extension=exe
+#      - name: Nexus Repo Publish
+#        uses: sonatype-nexus-community/nexus-repo-github-action@master
+#        with:
+#          serverUrl: https://nexus-ppe.ourtesco.com
+#          username: ${{ secrets.NEXUSUSERNAME }}
+#          password: ${{ secrets.NEXUSPASSWORD }}
+#          format: maven2
+#          repository: amittaltestmaven
+#          coordinates: groupId=com.example artifactId=app version=1.0.0
+#          assets: extension=exe
+#          filename: main.exe
