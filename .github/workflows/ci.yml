@@ -16,13 +16,13 @@ jobs:
       - name: Checkout the Code
         uses: actions/checkout@v2
       - name: Lint the Code
-          run: |
-            export PATH=$PATH:$(go env GOPATH)/bin
-            go get -u golang.org/x/lint/golint
-            echo $GOPATH
-            echo $GOBIN
-            golint main.go
-            gofmt -w main.go
+        run: |
+          export PATH=$PATH:$(go env GOPATH)/bin
+          go get -u golang.org/x/lint/golint
+          echo $GOPATH
+          echo $GOBIN
+          golint main.go
+          gofmt -w main.go
 
   build:
     runs-on: ubuntu-latest
@@ -39,7 +39,7 @@ jobs:
 #        if: github.event_name == 'push'
         run: go build main.go
       - name: run bash
-          run: |
-            pwd
-            ls -al
-            curl -v -u ${{ secrets.NEXUSUSERNAME }}:${{ secrets.NEXUSPASSWORD }} -X POST 'https://nexus-ppe.ourtesco.com/service/rest/v1/components?repository=amittaltestmaven' -F maven2.groupId=test3 -F maven2.artifactId=test3 -F maven2.version=1.0 -F maven2.asset1=@README.md -F maven2.asset1.extension=md
+        run: |
+          pwd
+          ls -al
+          curl -v -u ${{ secrets.NEXUSUSERNAME }}:${{ secrets.NEXUSPASSWORD }} -X POST 'https://nexus-ppe.ourtesco.com/service/rest/v1/components?repository=amittaltestmaven' -F maven2.groupId=test4 -F maven2.artifactId=test4 -F maven2.version=1.0 -F maven2.asset1=@README.md -F maven2.asset1.extension=md
