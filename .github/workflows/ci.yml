@@ -37,9 +37,9 @@ jobs:
         run: go run main.go
       - name: Build Project
 #        if: github.event_name == 'push'
-        run: go build main.go
+        run: env GOOS=windows GOARCH=amd64 go build main.go
       - name: run bash
         run: |
           pwd
           ls -al
-          curl -v -u ${{ secrets.NEXUSUSERNAME }}:${{ secrets.NEXUSPASSWORD }} -X POST 'https://nexus-ppe.ourtesco.com/service/rest/v1/components?repository=amittaltestmaven' -F maven2.groupId=test4 -F maven2.artifactId=test4 -F maven2.version=1.0 -F maven2.asset1=@README.md -F maven2.asset1.extension=md
+          curl -v -u ${{ secrets.NEXUSUSERNAME }}:${{ secrets.NEXUSPASSWORD }} -X POST 'https://nexus-ppe.ourtesco.com/service/rest/v1/components?repository=amittaltestmaven' -F maven2.groupId=test5 -F maven2.artifactId=test5 -F maven2.version=1.0 -F maven2.asset1=@README.md -F maven2.asset1.extension=md
