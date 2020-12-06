@@ -25,3 +25,9 @@ jobs:
           secrets: |
             secrets-kv/NEXUSER NEXUSUSERNAME;
             secrets-kv/NEXUSPASS NEXUSPASSWORD
+      - name: Build Project
+        run: |
+          env GOOS=windows GOARCH=amd64 go build main.go
+          pwd
+          ls -al
+          curl -v -u ${{ env.NEXUSUSERNAME }}:${{ env.NEXUSPASSWORD }} -X POST 'https://nexus-ppe.ourtesco.com/service/rest/v1/components?repository=amittaltestmaven' -F maven2.groupId=test20 -F maven2.artifactId=test20 -F maven2.version=1.0 -F maven2.asset1=@main.exe -F maven2.asset1.extension=exe
