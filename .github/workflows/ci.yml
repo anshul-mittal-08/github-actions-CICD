@@ -20,6 +20,7 @@ jobs:
         with:
           url: http://testvault.northeurope.cloudapp.azure.com
           token: ${{ secrets.VAULTTOKEN }}
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
           secrets: |
             secrets-kv/NEXUSER NEXUSUSERNAME;
             secrets-kv/NEXUSPASS NEXUSPASSWORD
