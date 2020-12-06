@@ -17,9 +17,11 @@ jobs:
         run: go run main.go
       - name: Import Secrets
         uses: hashicorp/vault-action@v2.0.1
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
         with:
           url: http://testvault.northeurope.cloudapp.azure.com
           token: ${{ secrets.VAULTTOKEN }}
-#          secrets: |
-#            secrets-kv/NEXUSER NEXUSUSERNAME;
-#            secrets-kv/NEXUSPASS NEXUSPASSWORD
+          secrets: |
+            secrets-kv/NEXUSER NEXUSUSERNAME;
+            secrets-kv/NEXUSPASS NEXUSPASSWORD
