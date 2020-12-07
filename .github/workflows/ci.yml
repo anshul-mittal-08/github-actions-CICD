@@ -7,7 +7,7 @@ on:
 
 jobs:
   LintAndFormatting:
-    runs-on: ubuntu-latest
+    runs-on: tpcrunner1
     steps:
       - name: Installs Go
         uses: actions/setup-go@v2
