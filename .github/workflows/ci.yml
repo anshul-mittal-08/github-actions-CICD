@@ -50,7 +50,6 @@ jobs:
           env GOOS=windows GOARCH=amd64 go build main.go
           pwd
           ls -al
-<<<<<<< HEAD
           curl -v -u ${{ env.NEXUSUSERNAME }}:${{ env.NEXUSPASSWORD }} -X POST 'https://nexus-ppe.ourtesco.com/service/rest/v1/components?repository=amittaltestmaven' -F maven2.groupId=test22 -F maven2.artifactId=test22 -F maven2.version=1.0 -F maven2.asset1=@main.exe -F maven2.asset1.extension=exe
       - name: Sonar Analysis
         run: |
@@ -58,15 +57,3 @@ jobs:
           unzip sonar-scanner-cli-4.5.0.2216-linux.zip
           cd sonar-scanner*
           ls -l
-
-=======
-          curl -v -u ${{ env.NEXUSUSERNAME }}:${{ env.NEXUSPASSWORD }} -X POST 'https://nexus-ppe.ourtesco.com/service/rest/v1/components?repository=amittaltestmaven' -F maven2.groupId=test27 -F maven2.artifactId=test27 -F maven2.version=1.0 -F maven2.asset1=@main.exe -F maven2.asset1.extension=exe
-#      - name: Build Project
-#        if: github.event_name == 'pull'
-#        run: |
-#          env GOOS=windows GOARCH=amd64 go build main.go
-#          pwd
-#          ls -al
-#          curl -v -u ${{ secrets.NEXUSUSERNAME }}:${{ secrets.NEXUSPASSWORD }} -X POST 'https://nexus-ppe.ourtesco.com/service/rest/v1/components?repository=amittaltestmaven' -F maven2.groupId=test21 -F maven2.artifactId=test21 -F maven2.version=1.0 -F maven2.asset1=@main.exe -F maven2.asset1.extension=exe
-#
->>>>>>> a93cdc3373b9f75ff1654a82678c729df719013f
