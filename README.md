@@ -1,1 +1,2 @@
-# GitHub Actions for Go
+# GitHub Actions
+
