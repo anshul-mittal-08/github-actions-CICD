@@ -25,7 +25,7 @@ jobs:
           gofmt -w main.go
 
   build:
-    runs-on: ubuntu-latest
+    runs-on: azuregitrunnerCICD
     steps:
       - name: Installs Go
         uses: actions/setup-go@v2
