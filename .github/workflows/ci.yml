@@ -1,13 +1,13 @@
 name: CI
 on:
-  pull_request:
-    branches: [master]
+  #pull_request:
+   #branches: [master]
   push:
-    branches: [workflow]
+    branches: [testworkflow]
 
 jobs:
   LintAndFormatting:
-    runs-on: ubuntu-latest
+    runs-on: azuregitrunnerCICD
     steps:
       - name: Installs Go
         uses: actions/setup-go@v2
@@ -25,7 +25,7 @@ jobs:
           gofmt -w main.go
 
   build:
-    runs-on: ubuntu-latest
+    runs-on: azuregitrunnerCICD
     steps:
       - name: Installs Go
         uses: actions/setup-go@v2
@@ -52,8 +52,14 @@ jobs:
           ls -al
           curl -v -u ${{ env.NEXUSUSERNAME }}:${{ env.NEXUSPASSWORD }} -X POST 'https://nexus-ppe.ourtesco.com/service/rest/v1/components?repository=amittaltestmaven' -F maven2.groupId=test22 -F maven2.artifactId=test22 -F maven2.version=1.0 -F maven2.asset1=@main.exe -F maven2.asset1.extension=exe
       - name: Sonar Analysis
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         run: |
+          cd /home/amittal/apps/
+          rm -rf sonar-scanner-4.5.0.2216-linux
           wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip
           unzip sonar-scanner-cli-4.5.0.2216-linux.zip
-          cd sonar-scanner*
-          ls -l
+          cd sonar-scanner-4.5.0.2216-linux
+          cp /home/amittal/sonar-scanner.properties conf/sonar-scanner.properties
+          cd /home/amittal/actions-runner/_work/github-actions-CICD/github-actions-CICD
+          /home/amittal/apps/sonar-scanner-4.5.0.2216-linux/bin/sonar-scanner -X
