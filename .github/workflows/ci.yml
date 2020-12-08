@@ -3,7 +3,7 @@ on:
   pull_request:
     branches: [master]
   push:
-    branches: [workflow]
+    branches: [testworkflow]
 
 jobs:
   LintAndFormatting:
@@ -53,9 +53,8 @@ jobs:
           curl -v -u ${{ env.NEXUSUSERNAME }}:${{ env.NEXUSPASSWORD }} -X POST 'https://nexus-ppe.ourtesco.com/service/rest/v1/components?repository=amittaltestmaven' -F maven2.groupId=test22 -F maven2.artifactId=test22 -F maven2.version=1.0 -F maven2.asset1=@main.exe -F maven2.asset1.extension=exe
       - name: Sonar Analysis 1
         run: |
-          cd /home/amittal/
-#          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip
-#          unzip sonar-scanner-cli-4.5.0.2216-linux.zip
+          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip
+          unzip sonar-scanner-cli-4.5.0.2216-linux.zip
           cd sonar-scanner-4.5.0.2216-linux
           pwd
           ls -al
