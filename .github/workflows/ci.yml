@@ -53,7 +53,7 @@ jobs:
           curl -v -u ${{ env.NEXUSUSERNAME }}:${{ env.NEXUSPASSWORD }} -X POST 'https://nexus-ppe.ourtesco.com/service/rest/v1/components?repository=amittaltestmaven' -F maven2.groupId=test22 -F maven2.artifactId=test22 -F maven2.version=1.0 -F maven2.asset1=@main.exe -F maven2.asset1.extension=exe
       - name: Sonar Analysis
         env:
-          GITHUBTOKEN: ${{ secrets.GITHUBTOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         run: |
           cd /home/amittal/apps/
           rm -rf sonar-scanner-4.5.0.2216-linux
