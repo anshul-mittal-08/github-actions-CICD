@@ -51,7 +51,7 @@ jobs:
           pwd
           ls -al
           curl -v -u ${{ env.NEXUSUSERNAME }}:${{ env.NEXUSPASSWORD }} -X POST 'https://nexus-ppe.ourtesco.com/service/rest/v1/components?repository=amittaltestmaven' -F maven2.groupId=test22 -F maven2.artifactId=test22 -F maven2.version=1.0 -F maven2.asset1=@main.exe -F maven2.asset1.extension=exe
-      - name: Sonar Analysis 2
+      - name: Sonar Analysis
         run: |
           wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip
           unzip sonar-scanner-cli-4.5.0.2216-linux.zip
