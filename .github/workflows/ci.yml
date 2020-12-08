@@ -59,4 +59,6 @@ jobs:
           unzip sonar-scanner-cli-4.5.0.2216-linux.zip
           cd sonar-scanner-4.5.0.2216-linux
           cp /home/amittal/sonar-scanner.properties conf/sonar-scanner.properties
+          cd ../bin
+          ./sonar-scanner
 
