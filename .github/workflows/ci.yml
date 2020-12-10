@@ -26,7 +26,6 @@ jobs:
 
   build:
     runs-on: azuregitrunnerCICD
-    if: github.event_name == 'pull_request' && github.event.pull_request.merged == true
     steps:
       - name: Installs Go
         uses: actions/setup-go@v2
